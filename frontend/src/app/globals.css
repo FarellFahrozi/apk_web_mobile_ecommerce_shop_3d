@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-pure-white: #FFFFFF;
+  --color-pure-black: #000000;
+  --color-accent-gray: #E5E5E5;
+  --color-alert-red: #FF3B30;
+
+  --color-primary: #0d7ff2;
+  --color-primary-hover: #0b6dd4;
+  --color-accent: #f59e0b;
+  --color-background-light: #f5f7f8;
+  --color-background-dark: #101922;
+  --color-card-dark: #18242F;
+  --color-card-hover: #1f2e3b;
+
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-syne), var(--font-manrope), sans-serif;
+  --font-body: var(--font-manrope), sans-serif;
+}
+
+:root {
+  --background: #101922;
+  --foreground: #f5f7f8;
+  --primary: #0d7ff2;
+  --accent: #111111;
+}
+
+.dark {
+  --background: #101922;
+  --foreground: #f5f7f8;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* ===== Glass Navigation ===== */
+.glass-nav {
+  background: rgba(16, 25, 34, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ===== Hero Section ===== */
+.canvas-simulation {
+  background: radial-gradient(ellipse at 60% 40%, #1a2632 0%, #101922 100%);
+}
+
+.glow-primary {
+  box-shadow: 0 0 25px rgba(13, 127, 242, 0.35), 0 0 60px rgba(13, 127, 242, 0.1);
+}
+
+.cursor-rotate {
+  cursor: w-resize;
+}
+
+.hero-overlay-gradient {
+  background: linear-gradient(to top, #101922 0%, transparent 40%);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: transparent;
+}
+
+.writing-vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+/* ===== Marquee ===== */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* ===== Scroll-down float ===== */
+@keyframes gentle-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(6px);
+    opacity: 0.8;
+  }
+}
+
+.animate-gentle-float {
+  animation: gentle-float 2.5s ease-in-out infinite;
+}
+
+/* ===== Fade-in up ===== */
+@keyframes fadeInKeyUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInKeyUp 0.8s ease-out forwards;
+}
+
+/* ===== Focus ring utility ===== */
+.focus-ring:focus-visible {
+  outline: 2px solid #0d7ff2;
+  outline-offset: 2px;
+}
+
+/* ===== Reduced Motion Respect ===== */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-marquee,
+  .animate-gentle-float,
+  .animate-pulse,
+  .animate-bounce {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Brand logos strip ===== */
+.brand-logo {
+  filter: grayscale(1) brightness(0.6);
+  transition: filter 0.3s ease;
+}
+
+.brand-logo:hover {
+  filter: grayscale(0) brightness(1);
+}
+
+/* ===== Shop Page: Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101922;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3b48;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d7ff2;
+}
+
+/* ===== Shop Page: Shimmer Skeleton ===== */
+.shimmer-bg {
+  background: linear-gradient(110deg, #18242f 8%, #23303d 18%, #18242f 33%);
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+/* ===== Shop Page: 3D Viewer Effects ===== */
+.group:hover .view-360-badge {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.group:hover .interactive-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px -5px rgba(13, 127, 242, 0.3);
+}
+
+.view-360-badge {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.interactive-hint {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(1rem);
+}
+
+/* ===== Glass Panel ===== */
+.glass-panel {
+  background: rgba(16, 25, 34, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ===== 3D Canvas Backgrounds ===== */
+.canvas-grid {
+  background-image: radial-gradient(#1e2e3d 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.scene-bg {
+  background-color: #101922;
+  background-image: radial-gradient(at 50% 50%, #17212b 0%, #101922 70%);
+}
+
+.canvas-bg {
+  background: radial-gradient(circle at center, #1a2632 0%, #101922 100%);
+}
+
+/* ===== AR Scan Line ===== */
+.ar-scan-line {
+  background: linear-gradient(to bottom, transparent, #0d7ff2, transparent);
+  height: 40%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
