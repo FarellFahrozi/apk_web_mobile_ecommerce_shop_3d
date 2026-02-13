@@ -33,7 +33,10 @@ Thumbs.db
 .go_cache/
 
 # Agents AI
-.agents/
+.agent/
+
+# Exclude frontend from this repo
+frontend/
 
 # --- Frontend ---
 
